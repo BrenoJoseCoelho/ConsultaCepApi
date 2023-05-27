@@ -5,12 +5,12 @@ const { StatusCodes } = require('http-status-codes');
 exports.authenticateToken = async (req, res, next) => {
     const token = req.headers['authorization'];
     if (!token) {
-      return res.sendStatus(401);
+      return StatusCodes.UNAUTHORIZED;
     }
   
     jwt.verify(token.replace('Bearer ', ''), process.env.SECRETKEY, (err, user) => {
       if (err) {
-        return res.sendStatus(403);
+        return StatusCodes.FORBIDDEN;
       }
   
       req.user = user;
@@ -23,10 +23,10 @@ exports.authenticateToken = async (req, res, next) => {
   
     if (username === 'admin' && password === 'apicependereco') {
       const token = jwt.sign({ username }, process.env.SECRETKEY,{
-        expiresIn: 300 
+        expiresIn: 300
     });
     return res.json({ auth: true, token: token });
     } else {
-      return res.status(401).json({ error: 'Credenciais inválidas' });
+      return res.status(StatusCodes.UNAUTHORIZED).json({ error: 'Credenciais inválidas' });
     }
   }
