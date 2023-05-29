@@ -16,4 +16,4 @@ npm install
 npm run dev
 
 # Testando via POSTMAN
-Após o porjeto estar rodando precisa acessar a rota de autenticação: localhost:3001/auth, copiar o token que da como resultado e passar esse Token no authorization com o type Bearer Token, após adicionar o token ai botar a rota localhost:3001/consultaendereco passando como Json o cep, segue um exemplo ao lado {"cep": "88150000"}
+Após o porjeto estar rodando precisa acessar a rota de autenticação: localhost:3001/auth e passar no body as credenciais "username": "admin", "password": "apicependereco", copiar o token que da como resultado e passar esse Token no authorization com o type Bearer Token, após adicionar o token ai botar a rota localhost:3001/consultaendereco passando como Json o cep, segue um exemplo ao lado {"cep": "88150000"}
